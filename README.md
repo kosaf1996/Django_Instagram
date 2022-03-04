@@ -1,7 +1,5 @@
 # Django_Instagram
 
-# Django_Instagram
-
 ### 1. 피드 생성
 - templates/instagram/main.html
 - content/models.py
@@ -54,12 +52,12 @@ https://fonts.google.com/icons
 - templates/instagram/main.html
 - https://kutar37.tistory.com/entry/HTML5-Javasciprt-DragDrop-%EA%B5%AC%ED%98%84-%EC%98%88%EC%A0%9C
 
-###AJAX -> 파일업로드
+### AJAX -> 파일업로드
 - 비동기 자바스크립트와 XML -> 동적 웹 페이지를 만들어 주기위함
 - content/views.py
 - templates/instagram/main.html
 
-###Django_MEDIA 폴더 기능
+### Django_MEDIA 폴더 기능
 - 파일서버가 없을시 img, 등의 파일들을 저장할수 있는 기능
 - instagram/settings.py
 - instagram/urls.py
