@@ -69,18 +69,15 @@
             <div style="display: flex">
                 <a href="/main" style="color: black"><span class="material-icons">home</span></a>
                 <span class="material-icons-outlined" id="nav_bar_add_box">add_box</span>
-
-
-
                 <div class="dropdown">
                     <a href="#" role="button"
                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="box" style="width: 25px; height: 25px">
-                        <img class="profile" src="{% get_media_prefix %}{{ user.profile_image }}">
+                        <img class="profile" src="https://www.snsboom.co.kr/common/img/default_profile.png">
                         </div>
                     </a>
                   <ul style="left: -158px" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="/content/profile">프로필</a></li>
+                    <li><a class="dropdown-item" href="#">프로필</a></li>
                       <li><hr class="dropdown-divider"> </li>
                     <li><a class="dropdown-item" href="/user/logout">로그아웃</a></li>
                   </ul>
@@ -91,107 +88,39 @@
     </nav>
 
 
-            <!-- 피드 리스트 -->
-            <div style="display: flex;flex-direction: row ; text-align: center; justify-content: center; padding-top: 60px; background-color: #FAFAFA ">
-                <div style="width: 500px; height: 1000px; margin-right: 300px">
-
-
-                     {% for feed in feed %}
-                    <!-- 피드 박스 -->
-                    <div class="feed_box">
-                        <div style="border: solid 1px black; background-color: white">
-                            <div style="display: flex; flex-direction: row; align-items: center; margin: 0 20px">
-                                <!-- 유저 프로필 사진 -->
-                                <div class="box" style="width: 60px; height: 60px">
-                                    <img class="profile" src="{% get_media_prefix %}{{ feed.profile_image }}">
-                                </div><!-- https://www.snsboom.co.kr/common/img/default_profile.png -->
-                                <div>
-                                    <!-- 유저 아이디 -->
-                                    <div>{{ feed.user_id }}</div>
-                                </div>
-                            </div>
-                            <!--피드 이미지 --><!--https://blog.kakaocdn.net/dn/o1KIw/btqu9mflPY6/rGk1mM3iugV1c6jj9Z3E80/img.jpg -->
-                            <div><img style="width: 100%" src="{% get_media_prefix %}{{ feed.image }}"> </div>
-                            <!-- 피드 이미지 하단 아이콘 -->
-                            <div style="margin: 0 20px;display: flex; flex-direction: row; justify-content: space-between ">
-                                <div>
-                                    <span class="material-icons-outlined">favorite_border</span>
-                                    <span class="material-icons-outlined">mode_comment</span>
-                                    <span class="material-icons-outlined">send</span>
-                                </div>
-                                <div>
-                                    <span class="material-icons-outlined">bookmark_border</span>
-                                </div>
-                            </div>
-
-                            <!-- 좋아요 -->
-                            <div style="margin:0 20px;text-align: left;font-size: 14px"> 망고 외 {{ feed.like_count }}명이 좋아합니다. </div>
-                            <!-- 작성자 글 -->
-                            <div style="margin:0 20px;text-align: left;font-size: 16px"><b>{{ feed.user_id }}</b> {{ feed.content }}</div>
-                            <!-- 댓글 -->
-                            <div style="margin:0 20px;text-align: left;font-size: 14px"><b>user02</b> 나도 제주도 가고싶다 ㅜㅜ</div>
-                            <!-- 댓글 입력창 -->
-                            <div>
-                                <input type="email" class="form-control" style="outline: none; box-shadow: none; border: none ; border-top: solid gray 1px" placeholder="댓글 달기...">
-
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
 
 
 
-        <div style="width: 400px; height: 1000px; position: fixed; left: 62%">
-            <div style="display: flex; flex-direction: row; align-items: center; margin: 0 20px">
-                <!-- 유저 프로필 사진 -->
-                <div class="box" style="width: 70px; height: 70px">
-                    <img class="profile" src={% get_media_prefix %}{{ user.profile_image }}>
-                </div>
-                <div style="margin-left: 10px; text-align: left">
-                    <!-- 유저 아이디 -->
-                    <div style="font-weight: bold">
-                        {{ user.nickname }}
-                    </div>
-                    <div style="color: gray">
-                        {{ user.name }}
-                    </div>
-                </div>
-            </div>
-            <div style="display: flex;flex-direction: row; justify-content: space-between">
-                <div style="font-weight: bold;color: gray">
-                    회원님을 위한 추천
-                </div>
-                <div>
-                    <a href="#" style="text-decoration: none;color: black; font-weight: bold">모두보기</a>
-                </div>
-            </div>
-            <div style="display: flex; flex-direction: row;justify-content: space-between; align-items: center; ">
-                <div style="display: flex; flex-direction: row">
-                    <!-- 추천인 프로필 사진 -->
-                    <div class="box" style="width: 35px; height: 35px">
-                        <img class="profile" src="https://www.snsboom.co.kr/common/img/default_profile.png">
-                    </div>
-                    <div style="margin-left: 10px; text-align: left">
-                        <!-- 추천인 아이디 -->
-                        <div style="font-weight: bold ;font-size: 14px">
-                            user0444
-                        </div>
-                        <div style="color: gray; font-size: 14px">
-                            추천 사유 여기
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <a href="#" style="text-decoration: none; font-weight: bold;font-size: 14px">팔로우</a>
-                </div>
-            </div>
-            <div style="margin-top: 50px; font-size: 12px;color: gray; text-align: left">소개 도움말 홍보센터 API
-                <br>개인정보처리방침 약관 위치 인기계정 해시태그 언어
-            </div>
+<div style="display: flex;flex-direction: row ; text-align: center; justify-content: center; padding-top: 60px; background-color: #FAFAFA ">
+    <div>
+        <div class="box" style="width: 160px; height: 160px">
+            <img class="profile" src="{% get_media_prefix %}{{ user.profile_image }}">
         </div>
     </div>
+
+
+    <div style="text-align: left">
+        <div style="display: flex; flex-direction: row; margin: 20px 0 ">
+            <div style="font-size: 26px; padding-right: 30px">
+                {{ user.nickname }}
+            </div>
+            <button id="button_profile_upload" style="margin-right: 40px">프로필 편집</button>
+            <input id="input_fileupload" type="file" onchange="profile_upload()" name="profile" style="display: none">
+            <span style="margin-right: 40px" class="material-icons-outlined">settings</span>
+        </div>
+
+        <div style="margin-bottom: 20px">
+            게시물 게시물 건수 팔로워 111 풀로웡111
+        </div>
+        <div>
+            <b> {{ user.name }}</b>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 
 
@@ -362,6 +291,42 @@
         }
 
 }
+    $('#button_profile_upload').click(function (){
+        $('#input_fileupload').click();
+    });
+
+    function profile_upload(){
+
+                let file = $('#input_fileupload')[0].files[0]; <!--피드 이미지 파일-->
+                let email = "{{ user.email }}";
+
+                let fd = new FormData();
+
+                fd.append('file', file);
+                fd.append('email', email);
+
+
+                <!--AJAX -->
+                $.ajax({
+                    url:"/user/profile/upload",
+                    data: fd,
+                    method:"POST",
+                    processData:false,
+                    contentType:false,
+
+                    success: function (data){
+                        console.log("성공");
+                    },
+                    error: function (request, status, error){
+                        console.log("에러");
+                    },
+                    complete:function (){
+                        console.log("완료");
+                        location.replace("/content/profile");
+                    }
+                });
+
+    }
 
  $('.modal_close').click(function (){
             $('#first_modal').css({
@@ -371,8 +336,6 @@
                 display: 'none'
             });
  });
-
-
 </script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

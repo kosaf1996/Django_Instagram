@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from instagram.settings import MEDIA_ROOT
+from user.models import User
 from .models import Feed
 
 
@@ -16,7 +17,21 @@ class Main(APIView):
         # Feed 모든 데이터를 가져옴 -> select * from content_feed -> feed 를 최신부터 보여주기위해 order_by 사용
         feed_list = Feed.objects.all().order_by('-id')
 
-        return render(request, "instagram/main.html", context=dict(feed=feed_list))
+        #TODO 세션을 활용해 로그인한 사용자 데이터 받기
+        email = request.session['email']
+
+        #TODO 세션에 이메일이 존재하지않을떄
+        if email is None:
+            render(request,"user/login.html")
+
+        user = User.objects.filter(email=email).first()
+
+        #TODO 이메일 주소가 회원이 아닐떄
+        if user is None:
+            render(request, "user/login.html")
+
+
+        return render(request, "instagram/main.html", context=dict(feed=feed_list, user=user))
 
 
 class UploadFeed(APIView):
@@ -39,3 +54,20 @@ class UploadFeed(APIView):
         Feed.objects.create(image=image,content=content,user_id=user_id,profile_image=profile_image,like_count=0)
 
         return Response(status=200)
+
+class Profile(APIView):
+    def get(self, request):
+        #TODO 세션을 활용해 로그인한 사용자 데이터 받기
+        email = request.session['email']
+
+        #TODO 세션에 이메일이 존재하지않을떄
+        if email is None:
+            render(request,"user/login.html")
+
+        user = User.objects.filter(email=email).first()
+
+        #TODO 이메일 주소가 회원이 아닐떄
+        if user is None:
+            render(request, "user/login.html")
+
+        return render(request, 'content/profile.html', context=dict(user=user))
