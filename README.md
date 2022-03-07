@@ -1,4 +1,3 @@
-
 # Django_Instagram
 
 ### 1. 피드 생성
@@ -28,9 +27,12 @@
 - user/models.py
 - 세션과 쿠키
 
-### 5. 좋아요
-### 6. 댓글
-### 7. 북마크
+### 5,6,7 좋아요,댓글,북마크
+- templates/instagram/main.html
+- content/urls.py
+- content/models.py
+- content/views.py
+
 ### 8. 프로필 페이지
 - templates/content/profile.html
 - content/urls.py
@@ -74,18 +76,18 @@ https://fonts.google.com/icons
 - templates/instagram/main.html
 - https://kutar37.tistory.com/entry/HTML5-Javasciprt-DragDrop-%EA%B5%AC%ED%98%84-%EC%98%88%EC%A0%9C
 
-### AJAX -> 파일업로드
+###AJAX -> 파일업로드
 - 비동기 자바스크립트와 XML -> 동적 웹 페이지를 만들어 주기위함
 - content/views.py
 - templates/instagram/main.html
 
-### Django_MEDIA 폴더 기능
+###Django_MEDIA 폴더 기능
 - 파일서버가 없을시 img, 등의 파일들을 저장할수 있는 기능
 - instagram/settings.py
 - instagram/urls.py
 - media 디렉토리 생성
 
-### 패스워드 암호화
+###패스워드 암호화
 - 암호화는 단방향과 양방향 암호화가 있음
 - 양방향 암호화는 비밀번호를 암호화하고 다시 복호화 할 수 있는 알고리즘
 - 단방향 암호화는 평문을 암호화하는 것은 가능하지만 암호화된 비밀번호를 다시 평문으로 복호화하는 것이 어려움
@@ -98,5 +100,3 @@ https://fonts.google.com/icons
 - 반대로 클라이언트에서 저장되는걸 쿠키라고 한다.
 - content/views.py
 - user/views.py
-
-
