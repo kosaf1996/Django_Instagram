@@ -107,7 +107,7 @@
                                 </div><!-- https://www.snsboom.co.kr/common/img/default_profile.png -->
                                 <div>
                                     <!-- 유저 아이디 -->
-                                    <div>{{ feed.user_id }}</div>
+                                    <div>{{ feed.nickname }}</div>
                                 </div>
                             </div>
                             <!--피드 이미지 --><!--https://blog.kakaocdn.net/dn/o1KIw/btqu9mflPY6/rGk1mM3iugV1c6jj9Z3E80/img.jpg -->
@@ -115,12 +115,14 @@
                             <!-- 피드 이미지 하단 아이콘 -->
                             <div style="margin: 0 20px;display: flex; flex-direction: row; justify-content: space-between ">
                                 <div>
-                                    <span class="material-icons-outlined">favorite_border</span>
+                                    <span id="favorite_{{ feed.id }}" feed_id="{{ feed.id }}" class="favorite material-icons-outlined" style="color: red">{% if feed.is_liked %}favorite{% else %}favorite_border{% endif %}</span>
                                     <span class="material-icons-outlined">mode_comment</span>
                                     <span class="material-icons-outlined">send</span>
                                 </div>
+                            <!-- 북마크 -->
                                 <div>
-                                    <span class="material-icons-outlined">bookmark_border</span>
+                                    <span id="bookmark_{{ feed.id }}" feed_id="{{ feed.id }}" class="bookmark material-icons-outlined">
+                                        {% if feed.is_marked %}bookmark{% else %}bookmark_border{% endif %}</span>
                                 </div>
                             </div>
 
@@ -129,10 +131,15 @@
                             <!-- 작성자 글 -->
                             <div style="margin:0 20px;text-align: left;font-size: 16px"><b>{{ feed.user_id }}</b> {{ feed.content }}</div>
                             <!-- 댓글 -->
-                            <div style="margin:0 20px;text-align: left;font-size: 14px"><b>user02</b> 나도 제주도 가고싶다 ㅜㅜ</div>
+                                {% for reply in feed.reply_list %}
+                                    <div style="margin:0 20px;text-align: left;font-size: 14px"><b>{{ reply.nickname }}</b> {{ reply.reply_content }}</div>
+                                {% endfor %}
                             <!-- 댓글 입력창 -->
-                            <div>
-                                <input type="email" class="form-control" style="outline: none; box-shadow: none; border: none ; border-top: solid gray 1px" placeholder="댓글 달기...">
+                            <div style="display: flex; flex-direction: row; justify-content: center">
+                                <input id="reply_{{ feed.id }}" type="email" class="form-control" style="outline: none; box-shadow: none; border: none ; border-top: solid gray 1px" placeholder="댓글 달기...">
+                                <div feed_id="{{ feed.id }}" class="upload_reply" style="width: 50px; color: cornflowerblue">
+                                    게시
+                                </div>
 
                             </div>
                         </div>
@@ -246,6 +253,95 @@
 
     <!-- Optional JavaScript; choose one of the two! -->
 <script>
+    <!--북마크-->
+    $('.bookmark').click(function (event){
+        let bookmark_id = event.target.id;
+        let bookmark_text = $.trim($('#'+bookmark_id).html());
+        let feed_id = event.target.attributes.getNamedItem('feed_id').value;
+
+        if(bookmark_text == 'bookmark'){
+            $('#'+bookmark_id).html('bookmark_border')
+        }else {
+            $('#'+bookmark_id).html('bookmark')
+        }
+
+         $.ajax({
+           url:"/content/bookmark",
+           data: {
+               feed_id: feed_id,
+               bookmark_text: bookmark_text
+           },
+
+           method: "POST",
+
+           success: function(data) {
+               console.log("성공");
+           },
+           error: function(request, status, error) {
+               console.log("에러");
+           },
+       });
+    });
+
+    <!--좋아요-->
+    $('.favorite').click(function (event){
+        let favorite_id = event.target.id;
+        let favorite_text = $.trim($('#'+favorite_id).html());
+        let feed_id = event.target.attributes.getNamedItem('feed_id').value;
+
+        if(favorite_text == 'favorite'){
+            $('#'+favorite_id).html('favorite_border')
+        }else {
+            $('#'+favorite_id).html('favorite')
+        }
+
+         $.ajax({
+           url:"/content/like",
+           data: {
+               feed_id: feed_id,
+               favorite_text: favorite_text
+           },
+
+           method: "POST",
+
+           success: function(data) {
+               console.log("성공");
+           },
+           error: function(request, status, error) {
+               console.log("에러");
+           },
+       });
+    });
+
+    <!--댓글업로드-->
+    $('.upload_reply').click(function (event){
+        let feed_id = event.target.attributes.getNamedItem('feed_id').value;
+        let reply_id = 'reply_'+feed_id;
+        let reply_content = $('#'+reply_id).val();``
+        console.log(feed_id)
+        if(reply_content.length <= 0 ){
+            alert("댓글을 입력하세요.")
+            return 0 ;
+        }
+
+         $.ajax({
+           url:"/content/reply",
+           data: {
+               feed_id: feed_id,
+               reply_content: reply_content
+           },
+
+           method: "POST",
+
+           success: function(data) {
+               console.log("성공");
+               location.replace('/main');
+           },
+           error: function(request, status, error) {
+               console.log("에러");
+           },
+       });
+    });
     <!--전역변수선언-->
     var files;
 
@@ -317,16 +413,14 @@
                 let file = files[0]; <!--피드 이미지 파일-->
                 let image = files[0].name; <!--피드 이미지 파일 이름-->
                 let content = $('#input_feed_content').val(); <!--피드 글 -->
-                let user_id= '{{ user.nickname }}'; <!--user_id-->
-                let profile_image="{{ user.profile_image }}";  <!--유저 프로필 사진-->
+
 
                 let fd = new FormData();
 
                 fd.append('file', file);
                 fd.append('image', image);
                 fd.append('content', content);
-                fd.append('profile_image', profile_image);
-                fd.append('user_id', user_id);
+
 
                 <!--AJAX -->
                 $.ajax({
