@@ -1,4 +1,3 @@
-
 # Django_Instagram
 
 ### 1. 피드 생성
@@ -28,9 +27,12 @@
 - user/models.py
 - 세션과 쿠키
 
-### 5. 좋아요
-### 6. 댓글
-### 7. 북마크
+### 5,6,7 좋아요,댓글,북마크
+- templates/instagram/main.html
+- content/urls.py
+- content/models.py
+- content/views.py
+
 ### 8. 프로필 페이지
 - templates/content/profile.html
 - content/urls.py
@@ -99,4 +101,6 @@ https://fonts.google.com/icons
 - content/views.py
 - user/views.py
 
+## 완료 PPT/ 개발자 정보
+[Djago_Instagram.pptx](https://github.com/kosaf1996/Django_Instagram/files/8203296/Djago_Instagram.pptx)
 
