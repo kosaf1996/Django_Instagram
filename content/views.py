@@ -20,21 +20,28 @@ class Main(APIView):
         # 세션을 활용해 로그인한 사용자 데이터 받기
         email = request.session.get('email', None)
 
+        user = User.objects.filter(email=email).first()
+        user_info = User.objects.filter(email=email).first()
+        print(user_info)
+
         # 세션에 이메일이 존재하지않을떄
         if email is None:
             render(request,"user/login.html")
 
-        user = User.objects.filter(email=email).first()
+
 
         # 이메일 주소가 회원이 아닐떄
         if user is None:
             render(request, "user/login.html")
-        for feed in feed_object_list:
 
+
+        for feed in feed_object_list:
             user = User.objects.filter(email=feed.email).first()
+
             #댓글 불러오기
             reply_object_list = Reply.objects.filter(feed_id=feed.id)
             reply_list = []
+
             for reply in reply_object_list:
                 user = User.objects.filter(email=reply.email).first()
                 reply_list.append(dict(
@@ -42,9 +49,11 @@ class Main(APIView):
                                         nickname=user.nickname,
                 ))
 
-            like_count=Like.objects.filter(feed_id=feed.id, is_like=True).count
+
+            like_count=Like.objects.filter(feed_id=feed.id, is_like=True).count()
             is_liked = Like.objects.filter(feed_id=feed.id, email=email, is_like=True).exists()
             is_marked = Bookmark.objects.filter(feed_id=feed.id, email=email, is_marked=True).exists()
+
             feed_list.append(dict(
                                     id = feed.id,
                                     image=feed.image,
@@ -59,8 +68,7 @@ class Main(APIView):
 
 
 
-
-        return render(request, "instagram/main.html", context=dict(feed=feed_list, user=user))
+        return render(request, "instagram/main.html", context=dict(feed=feed_list, user=user_info))
 
 
 class UploadFeed(APIView):

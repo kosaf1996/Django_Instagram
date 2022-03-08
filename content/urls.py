@@ -1,5 +1,6 @@
 from django.urls import path
 from content.views import UploadFeed, Profile, UploadReply,ToggleLike,ToggleBookmark
+from content.views import Main
 
 urlpatterns = [
     path('upload', UploadFeed.as_view()),
