@@ -102,6 +102,7 @@ https://fonts.google.com/icons
 - user/views.py
 
 ## 완료 PPT/ 개발자 정보
-[Django_Instagram.pptx](https://github.com/kosaf1996/Django_Instagram/files/8203349/Django_Instagram.pptx)
+
+[Django_Instagram.pptx](https://github.com/kosaf1996/Django_Instagram/files/8661475/Django_Instagram.pptx)
 
 
