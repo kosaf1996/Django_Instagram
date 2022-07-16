@@ -104,3 +104,4 @@ wrapt==1.12.1
 zipp==3.4.1
 pip3 install psycopg2==2.7.6
 pip install psycopg2-binary
+pip3 install uwsgi
