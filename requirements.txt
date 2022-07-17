@@ -1,3 +1,4 @@
+
 absl-py==0.11.0
 alembic==1.5.5
 argon2-cffi==20.1.0
@@ -102,6 +103,3 @@ Werkzeug==1.0.1
 widgetsnbextension==3.5.1
 wrapt==1.12.1
 zipp==3.4.1
-pip3 install psycopg2==2.7.6
-pip install psycopg2-binary
-pip3 install uwsgi
