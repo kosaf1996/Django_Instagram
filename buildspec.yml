@@ -18,11 +18,12 @@ phases:
             - REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION_NAME}.amazonaws.com/${ECR_REPOSITORY_NAME}
             # 태그 이름에 Git 커밋 해시를 이용
             - IMAGE_TAG=$(echo ${CODEBUILD_RESOLVED_SOURCE_VERSION} | cut -c 1-7)
-            - echo ${REPOSITORY_URI}
-            - echo ${IMAGE_TAG}
+
+
     build:
         commands:
             - docker image build -t ${REPOSITORY_URI}:${IMAGE_TAG} .
     post_build:
         commands:
+            - echo docker image push ${REPOSITORY_URI}:${IMAGE_TAG}
             - docker image push ${REPOSITORY_URI}:${IMAGE_TAG}
