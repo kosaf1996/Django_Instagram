@@ -3,7 +3,7 @@ version: 0.2
 env:
     variables:
         AWS_REGION_NAME: ap-northeast-2
-        ECR_REPOSITORY_NAME: django_app
+        ECR_REPOSITORY_NAME:django_app
         DOCKER_BUILDKIT: "1"
     
 phases:
