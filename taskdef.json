@@ -1,0 +1,20 @@
+{
+  "executionRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/ECSTaskExecutionRole",
+  "containerDefinitions": [{
+    "name": "nodejs_app",
+    "image": "<ECR_REPO_URI>:<VERSION>",
+    "essential": true,
+    "portMappings": [{
+      "protocol": "tcp",
+      "hostPort": 8080,
+      "containerPort": 8080
+    }]
+  }]
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "cpu": "256",
+  "memory": "512",
+  "family": "nodejs_app_taskdef"
+}
