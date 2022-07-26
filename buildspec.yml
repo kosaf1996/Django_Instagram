@@ -31,7 +31,7 @@ phases:
             # taskdef.json
             - cat taskdef.json | sed -e "s|<ACCOUNT_ID>|${AccountID}|g" -e "s|<ECR_REPO_URI>|${ECR_REPOSITORY_URI}|g" -e "s|<VERSION>|v${CODEBUILD_BUILD_NUMBER}|g" > taskdef.json
              # 치환
-            - cat appspec.yml > appspec.yml         
+   
 artifacts:
  files:
   - appspec.yml
