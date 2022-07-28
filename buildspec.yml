@@ -31,9 +31,9 @@ phases:
             # taskdef.json
             - cat taskdef.json | sed -e "s|<aws_account_id>|${AWS_ACCOUNT_ID}|g" -e "s|<ECR_REPO_URI>|${ECR_REPOSITORY_URI}|g" -e "s|<VERSION>|v${CODEBUILD_BUILD_NUMBER}|g" > taskdef.json
              # 치환
-            #- cat appspec.yaml > appspec.yaml
+            #- cat appspec.yml > appspec.yml
    
 artifacts:
  files:
-  - appspec.yaml
+  - appspec.yml
   - taskdef.json
