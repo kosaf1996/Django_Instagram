@@ -7,7 +7,7 @@ RUN pip install --upgrade pip
 RUN pip3 install -r requirements.txt
 
 #STEP3 Run the application on the port 8080
-EXPOSE 8000
+EXPOSE 80
 
 #STEP4 django project run 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
