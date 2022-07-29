@@ -25,8 +25,8 @@ phases:
             - docker image build -t ${REPOSITORY_URI}:v${CODEBUILD_BUILD_NUMBER} .
     post_build:
         commands:
-            - echo docker image push ${REPOSITORY_URI}:v${CODEBUILD_BUILD_NUMBER}
-            - docker image push ${REPOSITORY_URI}:v${CODEBUILD_BUILD_NUMBER}
+            - echo docker image push ${REPOSITORY_URI}:latest
+            - docker image push ${REPOSITORY_URI}:latest
             
             # taskdef.json
             - cat taskdef.json | sed -e "s|<aws_account_id>|${AWS_ACCOUNT_ID}|g" -e "s|<ECR_REPO_URI>|${ECR_REPOSITORY_URI}|g" -e "s|<VERSION>|v${CODEBUILD_BUILD_NUMBER}|g" > taskdef.json
