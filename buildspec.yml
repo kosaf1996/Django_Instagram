@@ -25,15 +25,13 @@ phases:
             - docker image build -t ${REPOSITORY_URI}:latest .
     post_build:
         commands:
-            - echo docker image push ${REPOSITORY_URI}:latest
-            - docker image push ${REPOSITORY_URI}:latest
+            - echo docker image push ${REPOSITORY_URI}:${IMAGE_TAG} .
+            - docker image push ${REPOSITORY_URI}:${IMAGE_TAG} .
             
             # taskdef.json
-            - cat taskdef.json | sed -e "s|<aws_account_id>|${AWS_ACCOUNT_ID}|g" -e "s|<ECR_REPO_URI>|${ECR_REPOSITORY_URI}|g" -e "s|<VERSION>|v${CODEBUILD_BUILD_NUMBER}|g" > taskdef.json
-             # 치환
-            #- cat appspec.yml > appspec.yml
+            - docker image push ${REPOSITORY_URI}:${IMAGE_TAG}
+            - printf '{"name":"%s","ImageURI":"%s"}' $ECR_REPOSITORY_NAME $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
    
 artifacts:
- files:
-  - appspec.yml
-  - taskdef.json
+    files:
+        - imageDetail.json
