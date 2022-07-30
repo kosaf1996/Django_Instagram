@@ -1,21 +1,21 @@
 {
-  "executionRoleArn": "arn:aws:iam::<aws_account_id>:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::[aws_account_id]:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "logConfiguration": {
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/sbcntr-backend-def",
+          "awslogs-group": "/ecs/django-app-def1",
           "awslogs-region": "ap-northeast-2",
           "awslogs-stream-prefix": "ecs"
         }
       },
       "portMappings": [
         {
-          "hostPort": 8000,
+          "hostPort": 80,
           "protocol": "tcp",
-          "containerPort": 8000
+          "containerPort": 80
         }
       ],
       "cpu": 256,
@@ -30,7 +30,7 @@
   ],
   "memory": "1024",
   "taskRoleArn": null,
-  "family": "sbcntr-backend-def",
+  "family": "django-app-def1",
   "requiresCompatibilities": ["FARGATE"],
   "networkMode": "awsvpc",
   "cpu": "512"
