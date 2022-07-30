@@ -22,11 +22,11 @@ phases:
 
     build:
         commands:
-            - docker image build -t ${REPOSITORY_URI}:latest .
+            - docker image build -t ${REPOSITORY_URI}:${IMAGE_TAG} .
     post_build:
         commands:
-            - echo docker image push ${REPOSITORY_URI}:${IMAGE_TAG} .
-            - docker image push ${REPOSITORY_URI}:${IMAGE_TAG} .
+            - echo docker image push ${REPOSITORY_URI}:${IMAGE_TAG}
+            - docker image push ${REPOSITORY_URI}:${IMAGE_TAG}
             
             # taskdef.json
             - docker image push ${REPOSITORY_URI}:${IMAGE_TAG}
