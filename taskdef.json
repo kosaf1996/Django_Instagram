@@ -30,9 +30,9 @@
   ],
       "volumes": [
         {
-            "name": "project",
+            "name": "django_app_efs",
             "efsVolumeConfiguration": {
-                "fileSystemId": "fs-00d8587d8df7bbd52",
+                "fileSystemId": "fs-0b81e6fb963f8bb7f",
                 "rootDirectory": "/django/Django_Instagram/media"
             }
         }
