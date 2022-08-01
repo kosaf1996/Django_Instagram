@@ -27,11 +27,8 @@ phases:
         commands:
             - echo docker image push ${REPOSITORY_URI}:${IMAGE_TAG}
             - docker image push ${REPOSITORY_URI}:${IMAGE_TAG}
-            
-            # taskdef.json
-            - docker image push ${REPOSITORY_URI}:${IMAGE_TAG}
-            - printf '{"name":"%s","ImageURI":"%s"}' $ECR_REPOSITORY_NAME $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
-   
+            - printf '{"name":"%s","ImageURI":"%s"}' $ECR_REPOSITORY_NAME $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json   
+
 artifacts:
     files:
         - imageDetail.json
