@@ -6,7 +6,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/django-app-def1",
+          "awslogs-group": "/ecs/django-app-def",
           "awslogs-region": "ap-northeast-2",
           "awslogs-stream-prefix": "ecs"
         }
@@ -30,7 +30,7 @@
   ],
   "memory": "1024",
   "taskRoleArn": null,
-  "family": "django-app-def1",
+  "family": "django-app-def",
   "requiresCompatibilities": ["FARGATE"],
   "networkMode": "awsvpc",
   "cpu": "512"
