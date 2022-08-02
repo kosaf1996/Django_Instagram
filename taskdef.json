@@ -6,7 +6,7 @@
           "logDriver": "awslogs",
           "secretOptions": null,
           "options": {
-            "awslogs-group": "/ecs/django-app-def",
+            "awslogs-group": "/ecs/django-app",
             "awslogs-region": "ap-northeast-2",
             "awslogs-stream-prefix": "ecs"
           }
@@ -16,6 +16,13 @@
             "hostPort": 80,
             "protocol": "tcp",
             "containerPort": 80
+          }
+        ],
+        "mountPoints": [
+          {
+            "readOnly": null,
+            "containerPath": "/django/Django_Instagram/media",
+            "sourceVolume": "django-app"
           }
         ],
         "cpu": 256,
@@ -28,24 +35,29 @@
         "name": "app"
       }
     ],
-    "volumes": [
-        {
-            "name": "django-app",
-            "efsVolumeConfiguration": {
-                "rootDirectory": null,
-                "transitEncryption": "ENABLED",
-                "authorizationConfig": {
-                    "iam": "DISABLED",
-                    "accessPointId": "fsap-045ea23c25b53dcc5"
-                },
-                "fileSystemId": "fs-0b81e6fb963f8bb7f"
-            }
-        }
-    ],
     "memory": "1024",
     "taskRoleArn": null,
     "family": "django-app-def",
     "requiresCompatibilities": ["FARGATE"],
     "networkMode": "awsvpc",
     "cpu": "512"
+     "volumes": [
+      {
+        "fsxWindowsFileServerVolumeConfiguration": null,
+        "efsVolumeConfiguration": {
+          "transitEncryptionPort": null,
+          "fileSystemId": "fs-0b81e6fb963f8bb7f",
+          "authorizationConfig": {
+            "iam": "DISABLED",
+            "accessPointId": "fsap-045ea23c25b53dcc5"
+          },
+          "transitEncryption": "ENABLED",
+          "rootDirectory": "/"
+        },
+        "name": "django-app",
+        "host": null,
+        "dockerVolumeConfiguration": null
+      }
+    ]
+
   }
