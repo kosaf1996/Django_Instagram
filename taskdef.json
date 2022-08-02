@@ -37,7 +37,7 @@
     ],
     "memory": "1024",
     "taskRoleArn": null,
-    "family": "sbcntr-backend-def",
+    "family": "django-app",
     "requiresCompatibilities": ["FARGATE"],
     "networkMode": "awsvpc",
     "cpu": "512",
