@@ -30,10 +30,15 @@
   ],
       "volumes": [
         {
-            "name": "django_app_efs",
+            "name": "django-app",
             "efsVolumeConfiguration": {
-                "fileSystemId": "fs-0b81e6fb963f8bb7f",
                 "rootDirectory": "/django/Django_Instagram/media"
+                "transitEncryption": "ENABLED",
+                "authorizationConfig": {
+                    "iam": "DISABLED",
+                    "accessPointId": "fsap-045ea23c25b53dcc5"
+                },
+                "fileSystemId": "fs-0b81e6fb963f8bb7f"
             }
         }
     ],
