@@ -1,51 +1,51 @@
 {
-  "executionRoleArn": "arn:aws:iam::583977559633:role/ecsTaskExecutionRole",
-  "containerDefinitions": [
-    {
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "secretOptions": null,
-        "options": {
-          "awslogs-group": "/ecs/django-app-def",
-          "awslogs-region": "ap-northeast-2",
-          "awslogs-stream-prefix": "ecs"
-        }
-      },
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "protocol": "tcp",
-          "containerPort": 80
-        }
-      ],
-      "cpu": 256,
-      "readonlyRootFilesystem": true,
-      "environment": [],
-      "memory": null,
-      "memoryReservation": 512,
-      "image": "<IMAGE1_NAME>",
-      "essential": true,
-      "name": "app"
-    }
-  ],
-      "volumes": [
-        {
-            "name": "django-app",
-            "efsVolumeConfiguration": {
-                "rootDirectory": "/django/Django_Instagram/media"
-                "transitEncryption": "ENABLED",
-                "authorizationConfig": {
-                    "iam": "DISABLED",
-                    "accessPointId": "fsap-045ea23c25b53dcc5"
-                },
-                "fileSystemId": "fs-0b81e6fb963f8bb7f"
-            }
-        }
+    "executionRoleArn": "arn:aws:iam::583977559633:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+      {
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "secretOptions": null,
+          "options": {
+            "awslogs-group": "/ecs/django-app-def",
+            "awslogs-region": "ap-northeast-2",
+            "awslogs-stream-prefix": "ecs"
+          }
+        },
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "protocol": "tcp",
+            "containerPort": 80
+          }
+        ],
+        "cpu": 256,
+        "readonlyRootFilesystem": true,
+        "environment": [],
+        "memory": null,
+        "memoryReservation": 512,
+        "image": "<IMAGE1_NAME>",
+        "essential": true,
+        "name": "app"
+      }
     ],
-  "memory": "1024",
-  "taskRoleArn": null,
-  "family": "django-app-def",
-  "requiresCompatibilities": ["FARGATE"],
-  "networkMode": "awsvpc",
-  "cpu": "512"
-}
+        "volumes": [
+          {
+              "name": "django-app",
+              "efsVolumeConfiguration": {
+                  "rootDirectory": "/django/Django_Instagram/media",
+                  "transitEncryption": "ENABLED",
+                  "authorizationConfig": {
+                      "iam": "DISABLED",
+                      "accessPointId": "fsap-045ea23c25b53dcc5"
+                  },
+                  "fileSystemId": "fs-0b81e6fb963f8bb7f"
+              }
+          }
+      ],
+    "memory": "1024",
+    "taskRoleArn": null,
+    "family": "django-app-def",
+    "requiresCompatibilities": ["FARGATE"],
+    "networkMode": "awsvpc",
+    "cpu": "512"
+  }
