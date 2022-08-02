@@ -32,7 +32,7 @@
           {
               "name": "django-app",
               "efsVolumeConfiguration": {
-                  "rootDirectory": "/django/Django_Instagram/media",
+                  "rootDirectory": null,
                   "transitEncryption": "ENABLED",
                   "authorizationConfig": {
                       "iam": "DISABLED",
