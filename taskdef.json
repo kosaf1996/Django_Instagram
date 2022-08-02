@@ -1,63 +1,175 @@
 {
-    "executionRoleArn": "arn:aws:iam::583977559633:role/ecsTaskExecutionRole",
-    "containerDefinitions": [
-      {
-        "logConfiguration": {
-          "logDriver": "awslogs",
-          "secretOptions": null,
-          "options": {
-            "awslogs-group": "/ecs/django-app",
-            "awslogs-region": "ap-northeast-2",
-            "awslogs-stream-prefix": "ecs"
-          }
+  "ipcMode": null,
+  "executionRoleArn": "arn:aws:iam::583977559633:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "dnsSearchDomains": null,
+      "environmentFiles": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": null,
+        "options": {
+          "awslogs-group": "/ecs/django-app",
+          "awslogs-region": "ap-northeast-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "entryPoint": null,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "protocol": "tcp",
+          "containerPort": 80
+        }
+      ],
+      "command": null,
+      "linuxParameters": null,
+      "cpu": 256,
+      "environment": [],
+      "resourceRequirements": null,
+      "ulimits": null,
+      "dnsServers": null,
+      "mountPoints": [
+        {
+          "readOnly": null,
+          "containerPath": "/django/Django_Instagram/media",
+          "sourceVolume": "django-app"
+        }
+      ],
+      "workingDirectory": null,
+      "secrets": null,
+      "dockerSecurityOptions": null,
+      "memory": null,
+      "memoryReservation": 512,
+      "volumesFrom": [],
+      "stopTimeout": null,
+      "image": "<IMAGE1_NAME>",
+      "startTimeout": null,
+      "firelensConfiguration": null,
+      "dependsOn": null,
+      "disableNetworking": null,
+      "interactive": null,
+      "healthCheck": null,
+      "essential": true,
+      "links": null,
+      "hostname": null,
+      "extraHosts": null,
+      "pseudoTerminal": null,
+      "user": null,
+      "readonlyRootFilesystem": null,
+      "dockerLabels": null,
+      "systemControls": null,
+      "privileged": null,
+      "name": "app"
+    }
+  ],
+  "placementConstraints": [],
+  "memory": "1024",
+  "taskRoleArn": null,
+  "compatibilities": [
+    "EC2",
+    "FARGATE"
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:583977559633:task-definition/django-app:2",
+  "family": "django-app",
+  "requiresAttributes": [
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.efsAuth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.efs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.25"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-ecr-pull"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.task-eni"
+    }
+  ],
+  "pidMode": null,
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "runtimePlatform": {
+    "operatingSystemFamily": "LINUX",
+    "cpuArchitecture": null
+  },
+  "cpu": "512",
+  "revision": 2,
+  "status": "ACTIVE",
+  "inferenceAccelerators": null,
+  "proxyConfiguration": null,
+  "volumes": [
+    {
+      "fsxWindowsFileServerVolumeConfiguration": null,
+      "efsVolumeConfiguration": {
+        "transitEncryptionPort": null,
+        "fileSystemId": "fs-0b81e6fb963f8bb7f",
+        "authorizationConfig": {
+          "iam": "DISABLED",
+          "accessPointId": "fsap-045ea23c25b53dcc5"
         },
-        "portMappings": [
-          {
-            "hostPort": 80,
-            "protocol": "tcp",
-            "containerPort": 80
-          }
-        ],
-        "mountPoints": [
-          {
-            "readOnly": null,
-            "containerPath": "/django/Django_Instagram/media",
-            "sourceVolume": "django-app"
-          }
-        ],
-        "cpu": 256,
-        "readonlyRootFilesystem": true,
-        "environment": [],
-        "memory": null,
-        "memoryReservation": 512,
-        "image": "<IMAGE1_NAME>",
-        "essential": true,
-        "name": "app"
-      }
-    ],
-    "memory": "1024",
-    "taskRoleArn": null,
-    "family": "django-app-def",
-    "requiresCompatibilities": ["FARGATE"],
-    "networkMode": "awsvpc",
-    "cpu": "512"
-     "volumes": [
-      {
-        "fsxWindowsFileServerVolumeConfiguration": null,
-        "efsVolumeConfiguration": {
-          "transitEncryptionPort": null,
-          "fileSystemId": "fs-0b81e6fb963f8bb7f",
-          "authorizationConfig": {
-            "iam": "DISABLED",
-            "accessPointId": "fsap-045ea23c25b53dcc5"
-          },
-          "transitEncryption": "ENABLED",
-          "rootDirectory": "/"
-        },
-        "name": "django-app",
-        "host": null,
-        "dockerVolumeConfiguration": null
-      }
-    ]
-
-  }
+        "transitEncryption": "ENABLED",
+        "rootDirectory": "/"
+      },
+      "name": "django-app",
+      "host": null,
+      "dockerVolumeConfiguration": null
+    }
+  ]
+}
