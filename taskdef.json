@@ -28,20 +28,20 @@
         "name": "app"
       }
     ],
-        "volumes": [
-          {
-              "name": "django-app",
-              "efsVolumeConfiguration": {
-                  "rootDirectory": null,
-                  "transitEncryption": "ENABLED",
-                  "authorizationConfig": {
-                      "iam": "DISABLED",
-                      "accessPointId": "fsap-045ea23c25b53dcc5"
-                  },
-                  "fileSystemId": "fs-0b81e6fb963f8bb7f"
-              }
-          }
-      ],
+    "volumes": [
+        {
+            "name": "django-app",
+            "efsVolumeConfiguration": {
+                "rootDirectory": null,
+                "transitEncryption": "ENABLED",
+                "authorizationConfig": {
+                    "iam": "DISABLED",
+                    "accessPointId": "fsap-045ea23c25b53dcc5"
+                },
+                "fileSystemId": "fs-0b81e6fb963f8bb7f"
+            }
+        }
+    ],
     "memory": "1024",
     "taskRoleArn": null,
     "family": "django-app-def",
