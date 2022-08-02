@@ -19,35 +19,28 @@
         }
       ],
       "cpu": 256,
-      "mountPoints": [
+	  "mountPoints": [
         {
           "readOnly": null,
           "containerPath": "/django/Django_Instagram/media",
           "sourceVolume": "django-app"
         }
       ],
-      "memoryReservation": 1024,
+      "readonlyRootFilesystem": true,
+      "environment": [],
+      "memory": null,
+      "memoryReservation": 512,
       "image": "<IMAGE1_NAME>",
+      "essential": true,
       "name": "app"
     }
   ],
-  "memory": "2048",
-  "compatibilities": [
-    "EC2",
-    "FARGATE"
-  ],
-  "family": "django-app",
-  "pidMode": null,
-  "requiresCompatibilities": [
-    "FARGATE"
-  ],
+  "memory": "1024",
+  "taskRoleArn": null,
+  "family": "sbcntr-backend-def",
+  "requiresCompatibilities": ["FARGATE"],
   "networkMode": "awsvpc",
-  "runtimePlatform": {
-    "operatingSystemFamily": "LINUX",
-  },
-  "cpu": "512",
-  "revision": 2,
-  "status": "ACTIVE",
+  "cpu": "512"
   "volumes": [
     {
       "fsxWindowsFileServerVolumeConfiguration": null,
@@ -66,4 +59,5 @@
       "dockerVolumeConfiguration": null
     }
   ]
+
 }
