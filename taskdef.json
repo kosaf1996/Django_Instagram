@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/django-app-def",
+          "awslogs-group": "/ecs/django-app-des",
           "awslogs-region": "ap-northeast-2",
           "awslogs-stream-prefix": "ecs"
         }
@@ -32,7 +32,7 @@
       "mountPoints": [
         {
           "readOnly": null,
-          "containerPath": "/django/Django_Instagram.media",
+          "containerPath": "/django/Django_Instagram/media",
           "sourceVolume": "django-app"
         }
       ],
@@ -43,7 +43,7 @@
       "memoryReservation": 512,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "<IMAGE1_NAME>",
+      "image": "<IMAGE1_NAME>",      
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -56,7 +56,7 @@
       "extraHosts": null,
       "pseudoTerminal": null,
       "user": null,
-      "readonlyRootFilesystem": null,
+      "readonlyRootFilesystem": true,
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
@@ -64,14 +64,14 @@
     }
   ],
   "placementConstraints": [],
-  "memory": "2048",
+  "memory": "1024",
   "taskRoleArn": null,
   "compatibilities": [
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:583977559633:task-definition/django-app-def:15",
-  "family": "django-app-def",
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:583977559633:task-definition/django-app-des:1",
+  "family": "django-app-des",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -113,6 +113,12 @@
       "targetId": null,
       "targetType": null,
       "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
       "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
     },
     {
@@ -145,9 +151,12 @@
     "FARGATE"
   ],
   "networkMode": "awsvpc",
-  "runtimePlatform": null,
-  "cpu": "1024",
-  "revision": 15,
+  "runtimePlatform": {
+    "operatingSystemFamily": "LINUX",
+    "cpuArchitecture": null
+  },
+  "cpu": "512",
+  "revision": 1,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
@@ -156,10 +165,10 @@
       "fsxWindowsFileServerVolumeConfiguration": null,
       "efsVolumeConfiguration": {
         "transitEncryptionPort": null,
-        "fileSystemId": "fs-0b81e6fb963f8bb7f",
+        "fileSystemId": "fs-09ab2e7ec615a7a39",
         "authorizationConfig": {
           "iam": "DISABLED",
-          "accessPointId": "fsap-045ea23c25b53dcc5"
+          "accessPointId": "fsap-050b398f2491abe8d"
         },
         "transitEncryption": "ENABLED",
         "rootDirectory": "/"
