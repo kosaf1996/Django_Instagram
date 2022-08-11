@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/django-app-de",
+          "awslogs-group": "/ecs/django-app-def",
           "awslogs-region": "ap-northeast-2",
           "awslogs-stream-prefix": "ecs"
         }
@@ -70,7 +70,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:583977559633:task-definition/django-app-des:1",
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:583977559633:task-definition/django-app-def:1",
   "family": "django-app-des",
   "requiresAttributes": [
     {
