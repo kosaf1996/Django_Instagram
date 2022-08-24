@@ -3,8 +3,11 @@ WORKDIR /django/Django_Instagram
 
 #Step2 git clone
 RUN git clone https://github.com/kosaf1996/Django_Instagram.git /django/Django_Instagram
+RUN sed 's/ACCESS/${ACCESS}/' /instagram/setting.py
+RUN sed 's/SECRET/${SECRET}/' /instagram/setting.py
 RUN pip install --upgrade pip
 RUN pip3 install -r requirements.txt
+
 
 #STEP3 Run the application on the port 8080
 EXPOSE 80
