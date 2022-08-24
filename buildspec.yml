@@ -5,6 +5,14 @@ env:
         AWS_REGION_NAME: ap-northeast-2
         ECR_REPOSITORY_NAME: django_app
         DOCKER_BUILDKIT: "1"
+
+    secrets-manager:
+      ACCESS: DynamoDB:ACCESS
+      SECRET : DynamoDB:SECRET
+
+  secrets-manager:
+    ECR_REPOSITORY_URI: NODEJS_APP_SECRET:ECR_REPOSITORY_URI
+    APP_NAME : NODEJS_APP_SECRET:APP_NAME
     
 phases:
     install:
